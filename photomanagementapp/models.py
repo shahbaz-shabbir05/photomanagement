@@ -31,7 +31,6 @@ class Photo(models.Model):
     created_at = models.DateTimeField(_('created_at'), auto_now_add=True)
     gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE)
 
-
     class Meta:
         verbose_name = _('photo')
         verbose_name_plural = _('photos')
