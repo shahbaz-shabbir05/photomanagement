@@ -38,6 +38,3 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.title
-
-    def admin_thumbnail(self):
-        return u"<img src=\"%s/%s\" />" % (settings.MEDIA_URL, self.small)
