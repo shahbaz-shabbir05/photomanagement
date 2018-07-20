@@ -13,7 +13,6 @@ handlers:
   script: main.application
 
 libraries:
-
 - name: django
   version: "1.11"
 
