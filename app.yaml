@@ -20,10 +20,30 @@
 #DJANGO_SETTINGS_MODULE: 'photomanagement.settings'
 
 #
+#runtime: python27
+#api_version: 1
+#threadsafe: true
+#
+#handlers:
+#- url: /static
+#  static_dir: static
+#- url: /.*
+#  script: main.application
+#
+#libraries:
+#- name: ssl
+#  version: latest
+#
+#env_variables:
+#  GAE_USE_SOCKETS_HTTPLIB : True #Also tried '53778008'
+
+application: shahbaz-photomanagement
+version: 1
 runtime: python27
 api_version: 1
-threadsafe: true
+threadsafe: yes
 
+# Handlers match in order, put above the default handler.
 handlers:
 - url: /static
   static_dir: static
@@ -31,8 +51,14 @@ handlers:
   script: main.application
 
 libraries:
+- name: django
+  version: "1.11"
+- name: jinja2
+  version: "2.6"
+- name: markupsafe
+  version: "0.15"
 - name: ssl
   version: latest
 
-env_variables:
-  GAE_USE_SOCKETS_HTTPLIB : True #Also tried '53778008'
+builtins:
+- django_wsgi: on
