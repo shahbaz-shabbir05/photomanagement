@@ -1,0 +1,21 @@
+application: shahbaz-photomanagement
+version: 1
+runtime: python3.6.5
+api_version: 1
+threadsafe: yes
+
+handlers:
+
+- url: /static
+  static_dir: static
+
+- url: /.*
+  script: main.application
+
+libraries:
+
+- name: django
+  version: "2.0.7"
+
+env_variables:
+DJANGO_SETTINGS_MODULE: 'photomanagement.settings'
