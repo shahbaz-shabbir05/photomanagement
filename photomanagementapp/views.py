@@ -10,7 +10,7 @@ from photomanagementapp.models import Gallery, Photo
 class SignUp(generic.CreateView):
     form_class = SignUpForm
     # success_url = reverse_lazy('login')
-    template_name = 'signup.html'
+    template_name = 'jinja2/signup.html'
 
     def post(self, request, **kwargs):
         if request.method == 'POST':
@@ -24,11 +24,11 @@ class SignUp(generic.CreateView):
                 return redirect('home')
         else:
             form = SignUpForm()
-        return render(request, 'signup.html', {'form': form})
+        return render(request, 'jinja2/signup.html', {'form': form})
 
 
 class IndexView(generic.TemplateView):
-    template_name = 'index.html'
+    template_name = 'jinja2/index.html'
 
     def get(self, request, *args, **kwargs):
         galleries = Gallery.objects.all()
@@ -43,11 +43,11 @@ class IndexView(generic.TemplateView):
                 return redirect('home')
         else:
             form = GalleryCreationForm()
-        return render(request, 'index.html', {'form': form})
+        return render(request, 'jinja2/index.html', {'form': form})
 
 
 class PhotosView(generic.TemplateView):
-    template_name = 'photos.html'
+    template_name = 'jinja2/photos.html'
 
     def get(self, request, *args, **kwargs):
         gallery_id = kwargs.get('gallery_id')
@@ -56,12 +56,14 @@ class PhotosView(generic.TemplateView):
         return render(request, self.template_name, {'photos': photos, 'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = UploadPhotoForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('photos', args=[kwargs.get('gallery_id')]))
-        form = UploadPhotoForm()
-        return render(request, 'index.html', {'form': form})
+        if request.method == 'POST':
+            form = UploadPhotoForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('photos', args=[kwargs.get('gallery_id')]))
+        else:
+            form = UploadPhotoForm()
+        return render(request, 'jinja2/index.html', {'form': form})
 
 
 class DeleteGalleryView(generic.TemplateView):

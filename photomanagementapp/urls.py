@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^photos/(?P<gallery_id>\d+)$', PhotosView.as_view(), name='photos'),
     url(r'^signup/$', SignUp.as_view(), name='signup'),
     url(r'^login/$', login, {
-        'template_name': 'registration/login.html',
+        'template_name': 'jinja2/registration/login.html',
         'authentication_form': SignInForm,
     }, name='login'),
     url(r'^logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
