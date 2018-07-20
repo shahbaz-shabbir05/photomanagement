@@ -37,8 +37,6 @@
 #env_variables:
 #  GAE_USE_SOCKETS_HTTPLIB : True #Also tried '53778008'
 
-application: shahbaz-photomanagement
-version: 1
 runtime: python27
 api_version: 1
 threadsafe: yes
