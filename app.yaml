@@ -19,7 +19,7 @@
 #env_variables:
 #DJANGO_SETTINGS_MODULE: 'photomanagement.settings'
 
-
+#
 runtime: python27
 api_version: 1
 threadsafe: true
