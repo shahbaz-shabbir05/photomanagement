@@ -9,7 +9,6 @@ from photomanagementapp.models import Gallery, Photo
 
 class SignUp(generic.CreateView):
     form_class = SignUpForm
-    # success_url = reverse_lazy('login')
     template_name = 'jinja2/signup.html'
 
     def post(self, request, **kwargs):

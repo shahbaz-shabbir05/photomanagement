@@ -34,12 +34,6 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
 
-    # def __init__(self, *args, **kwargs):
-    #     super(SignUpForm, self).__init__(*args, **kwargs)
-    #
-    #     for fieldname in ['username', 'email']:
-    #         self.fields[fieldname].help_text = None
-
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
         r = User.objects.filter(username=username)
