@@ -15,7 +15,7 @@ handlers:
 libraries:
 
 - name: django
-  version: "2.0.7"
+  version: "1.11"
 
 env_variables:
 DJANGO_SETTINGS_MODULE: 'photomanagement.settings'
