@@ -1,3 +1,4 @@
+Pillow
+setuptools==39.1.0
 django==1.11
 jinja2
-
